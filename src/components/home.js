@@ -52,24 +52,31 @@ function Home(props) {
   return (
     <div>
       {user ? (
-        <div>
-          <h1>Welcome, {user.displayName}</h1>
-          <div><UserDetails/></div>
-          <h2>Appointments</h2>
-          <div className="appointments-container">
+        <div class="home-page">
+        <h1 class="welcome-header">Welcome {user.displayName}</h1>
+        <div class="user-details">
+          <UserDetails />
+        </div>
+        <h2 class="appointments-header">Appointments</h2>
+        {appointments.length > 0 ? (
+          <div class="appointments-container">
             {appointments.map(appointment => (
-              <div key={appointment.uid} className="appointment-card">
-                <p className="reason">Reason: {appointment.reason}</p>
-                <p className="date-time">Date: {appointment.date}</p>
-                <p className="date-time">Time: {appointment.time}</p>
+              <div class="appointment-card" key={appointment.uid}>
+                <p class="reason">Reason: {appointment.reason}</p>
+                <p class="date-time">Date: {appointment.date}</p>
+                <p class="date-time">Time: {appointment.time}</p>
               </div>
             ))}
           </div>
-          <Link to="/booking">
-            <button>Book an appointment</button>
-          </Link>
-          <button onClick={() => auth.signOut()}>Sign Out</button>
-        </div>
+        ) : (
+          <p class="no-appointments">You need to book an appointment</p>
+        )}
+        <Link to="/booking">
+          <button class="book-appointment-btn">Book an appointment</button>
+        </Link>
+        <button class="sign-out-btn" onClick={() => auth.signOut()}>Sign Out</button>
+      </div>
+
       ) : (
         <div>
           <h1>Please sign in</h1>

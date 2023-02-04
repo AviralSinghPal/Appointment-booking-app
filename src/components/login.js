@@ -31,23 +31,41 @@ const handleSubmit=(e)=>{
 }
 
     return (
-    <>
-    <form onSubmit={handleSubmit}>
-    <h1>Login</h1>
-    <br/>
-    <div>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="your@email.com"/><br/>        
-        <label>Password:</label>
-        <input type = "password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="********"/><br/>
-    </div>
-    <br/>
-    <b>{errorMsg}</b>
-    <br/>
-    <button type="submit" >Login</button>
-    <div>Don't have an account?<Link to="/signup"><button >SignUp</button></Link></div>
-    </form>
-    </>
+        <>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h1 className="form-title">Login</h1>
+          <br />
+          <div className="form-input">
+            <label className="form-label">Email:</label>
+            <input
+              className="input-field"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+            /><br />
+            <label className="form-label">Password:</label>
+            <input
+              className="input-field"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="********"
+            /><br />
+          </div>
+          <br />
+          <b className="error-message">{errorMsg}</b>
+          <br />
+          <button className="submit-button" type="submit">Login</button>
+          <div className="signup-link">
+            Don't have an account?
+            <Link to="/signup">
+              <button className="signup-button">SignUp</button>
+            </Link>
+          </div>
+        </form>
+      </>
+      
     );
 }
 

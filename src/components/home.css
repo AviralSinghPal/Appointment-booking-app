@@ -60,4 +60,19 @@ li {
     flex-wrap: wrap;
     justify-content: center;
   }
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    color: #4a9221;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: #3e8e41;
+    text-align: center;
+    margin-top: 2rem;
+  }
   

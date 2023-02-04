@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { database } from "./firebase";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,18 +22,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const BookingForm = () => {
+const BookingForm = (props) => {
   const classes = useStyles();
   const [reason, setReason] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     // Add your submit logic here
     console.log("Reason: ", reason);
     console.log("Date: ", date);
     console.log("Time: ", time);
+    console.log("UserId: ", props.userId);
+
+    try {
+        
+        const userId = props.userId; // Replace this with the actual user ID
+        await database.collection("bookings").add({ reason, date, time, userId });
+        console.log("Data successfully added to Firestore");
+      } catch (error) {
+        console.error("Error adding data to Firestore: ", error);
+      }
     // Clear form fields
     setReason("");
     setDate("");

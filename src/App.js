@@ -9,12 +9,14 @@ import Signup from "./components/signup";
 
 function App() {
   const [userName, setUserName] = useState("");
+  const [userid, setUserid] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         
         setUserName(user.displayName);
+        setUserid(user.uid)
       } else setUserName("");
     });
   }, []);
@@ -25,7 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home name={userName} />} />
-          <Route path="/booking" element={<BookingForm />} />
+          <Route path="/booking" element={<BookingForm userId={userid}/>} />
         </Routes>
       </Router>
     </div>

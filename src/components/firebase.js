@@ -11,7 +11,6 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyDLxl1NSPa-Tr4t9KBm0RcQyp_Uli7-f48",
   authDomain: "first-firebase-app-d28e1.firebaseapp.com",
-  databaseURL: "https://first-firebase-app-d28e1-default-rtdb.firebaseio.com",
   projectId: "first-firebase-app-d28e1",
   storageBucket: "first-firebase-app-d28e1.appspot.com",
   messagingSenderId: "827165029486",

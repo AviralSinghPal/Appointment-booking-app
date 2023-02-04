@@ -4,7 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { database } from "./firebase";
+import { Link } from "react-router-dom";
+import { auth, database, app } from "./firebase";
+import {collection , addDoc } from 'firebase/firestore'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,11 +24,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
 const BookingForm = (props) => {
   const classes = useStyles();
+  // const [user, setUser] = useState("");
   const [reason, setReason] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const collectionRef = collection(database,'bookings')
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -38,16 +43,28 @@ const BookingForm = (props) => {
 
     try {
         
-        const userId = props.userId; // Replace this with the actual user ID
-        await database.collection("bookings").add({ reason, date, time, userId });
+        
+        // await database.collection("bookings").doc(props.uid).add({ reason, date, time });
+         addDoc(collectionRef,{
+          reason: reason,
+          date: date,
+          time: time,
+          uid: props.userId
+        }).then(()=>{
+          alert('data added')
+        }).catch((err)=>{ alert(err.message)});
+
         console.log("Data successfully added to Firestore");
       } catch (error) {
-        console.error("Error adding data to Firestore: ", error);
+        alert(error.message)
+        console.error("Error adding data to Firestore: ", error.message);
       }
     // Clear form fields
     setReason("");
     setDate("");
     setTime("");
+
+    
   };
 
   return (
@@ -98,7 +115,9 @@ const BookingForm = (props) => {
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
               Submit
-            </Button>
+            </Button><br/>
+            <Link to="/"><Button variant="contained">Go to Home</Button></Link>
+            
           </Grid>
         </Grid>
       </form>

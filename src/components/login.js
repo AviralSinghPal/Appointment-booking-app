@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { Link ,useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "./firebase";
+import "./login.css"
 
 const Login = (props) => {
 const navigate = useNavigate();

@@ -18,7 +18,7 @@ function UserDetails() {
     return <div>Not logged in</div>;
   }
 
-  return <div>Hi {user.email}</div>;
+  return <div>Email: {user.email}</div>;
 }
 
 export default UserDetails;

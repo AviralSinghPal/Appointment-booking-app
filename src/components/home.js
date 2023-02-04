@@ -80,12 +80,10 @@ function Home(props) {
       ) : (
         <div>
           <h1>Please sign in</h1>
-          <button >
-          <Link to="/login">Login</Link>
-          </button>
-          <button >
-          <Link to="/signup">SignUp</Link>
-          </button>
+          <div class="btns">
+          <Link to="/login"><button >Login</button></Link>     
+          <Link to="/signup"><button >SignUp</button></Link>
+          </div>
         </div>
       )}
     </div>

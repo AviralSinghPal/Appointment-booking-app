@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { auth, database } from "./firebase";
 import { Link } from 'react-router-dom';
 import UserDetails from "./userdetails";
-import { auth, database, app } from "./firebase";
+import { auth, database } from "./firebase";
 import {collection , getDocs } from 'firebase/firestore';
 import './home.css'
 
